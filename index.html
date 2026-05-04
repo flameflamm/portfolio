@@ -1202,14 +1202,19 @@
   <h2 class="contact-heading reveal reveal-delay-1">Let's make<br /><em>something.</em></h2>
   <p class="contact-sub reveal reveal-delay-2">Open to new roles in game development. Based in Hungary, open to remote.</p>
   <div class="contact-links reveal reveal-delay-3">
-    <a href="/cdn-cgi/l/email-protection#066b69746a67686146636b676f6a2865696b" class="contact-link primary"><span class="__cf_email__" data-cfemail="4f22203d232e21280f2a222e2623612c2022">[email&#160;protected]</span></a>
+    <a href="/cdn-cgi/l/email-protection#066b69746a67686146636b676f6a2865696b" id="email-link" class="contact-link primary"><span class="__cf_email__" data-cfemail="4f22203d232e21280f2a222e2623612c2022">[email&#160;protected]</span></a>
     <a href="#" class="contact-link">LinkedIn</a>
     <a href="#" class="contact-link">itch.io</a>
   </div>
   <div class="footer-line reveal reveal-delay-4">© 2026 Mór Láng · Unity Developer · Hungary</div>
 </section>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+    const e = 'morlang' + '@' + 'email.com';
+    const el = document.getElementById('email-link');
+    el.href = 'mailto:' + e;
+    el.textContent = e;
+</script>
+<script>
   // Nav scroll behaviour
   const nav = document.getElementById('main-nav');
   window.addEventListener('scroll', () => {
