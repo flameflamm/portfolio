@@ -220,11 +220,14 @@
     "headingAccent": "something.",
     "subtitle": "Open to new roles in game development. Based in Hungary, open to remote.",
     "email": {
-      "user": "morlang",
-      "domain": "email.com"
+      "user": "flamm.flame",
+      "domain": "gmail.com"
     },
     "links": [
-      { "label": "LinkedIn", "href": "#" },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/mor-lang"
+      },
       { "label": "itch.io",  "href": "#" }
     ],
     "footerLine": "© 2026 Mór Láng · Unity Developer · Hungary"
