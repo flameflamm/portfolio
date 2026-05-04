@@ -1,0 +1,232 @@
+{
+  "meta": {
+    "title": "Mór Láng — Game Developer",
+    "pageTitle": "Mór Láng"
+  },
+
+  "nav": {
+    "logo": "Mór Láng",
+    "links": [
+      { "label": "About",      "href": "#about" },
+      { "label": "Experience", "href": "#experience" },
+      { "label": "Projects",   "href": "#projects" },
+      { "label": "Skills",     "href": "#skills" }
+    ],
+    "cta": { "label": "Get in touch", "href": "#contact" }
+  },
+
+  "hero": {
+    "eyebrow": "Unity Developer · Hungary",
+    "nameLine1": "Mór",
+    "nameLine2": "Láng",
+    "subtitle": "Crafting games and tools in Unity — from VR experiences and AR applications to indie multiplayer games with clean, intentional architecture.",
+    "ctaPrimary":  { "label": "See my work",   "href": "#projects" },
+    "ctaSecondary": { "label": "Get in touch", "href": "#contact" }
+  },
+
+  "about": {
+    "sectionLabel": "About",
+    "headline": "Building games that",
+    "headlineAccent": "feel right.",
+    "paragraphs": [
+      "I've spent years in Unity across a range of disciplines — VR locomotion systems, AR enterprise tools, multiplayer architecture, and performant UI. My focus is always on code that's clean, maintainable, and a joy to build on top of.",
+      "Outside of client work, I'm building indie games that matter to me: deterministic networked shooters, spellcasting brawlers, and a quiet story about plush toys and family. The hobby projects inform the professional ones."
+    ],
+    "stats": [
+      { "value": "4+",   "label": "Years in Unity" },
+      { "value": "4",    "label": "Professional Roles" },
+      { "value": "3",    "label": "Hobby Games Built" },
+      { "value": "AR·VR","label": "Domains Shipped" }
+    ]
+  },
+
+  "experience": {
+    "sectionLabel": "Experience",
+    "heading": "Where I've",
+    "headingAccent": "worked.",
+    "items": [
+      {
+        "period": "2025 – Present",
+        "type": "Full-time",
+        "company": "Móra-BOOKR Kft.",
+        "role": "Unity UI & Tools Programmer",
+        "bullets": [
+          "Developing performant, scalable UI systems using Unity's UI Toolkit and custom tooling",
+          "Architecting editor tools to accelerate the content pipeline for children's interactive books",
+          "Implementing dependency injection patterns with VContainer for clean, testable code",
+          "Async programming with UniTask for non-blocking asset loading and animations"
+        ],
+        "tags": [
+          { "label": "Unity",     "type": "engine" },
+          { "label": "C#",        "type": "language" },
+          { "label": "UniTask",   "type": "library" },
+          { "label": "VContainer","type": "library" },
+          { "label": "DOTween",   "type": "library" }
+        ]
+      },
+      {
+        "period": "2024",
+        "type": "Full-time",
+        "company": "Prostep Consultancy Kft.",
+        "role": "Unity AR & Tools Programmer",
+        "bullets": [
+          "Built augmented reality experiences for enterprise clients",
+          "Created custom Unity editor tools to streamline artist and designer workflows",
+          "Collaborated cross-functionally with design and product teams on AR pipelines"
+        ],
+        "tags": [
+          { "label": "Unity",         "type": "engine" },
+          { "label": "C#",            "type": "language" },
+          { "label": "AR Development","type": "domain" },
+          { "label": "Photoshop",     "type": "tool" }
+        ]
+      },
+      {
+        "period": "2024",
+        "type": "Part-time",
+        "company": "esport1",
+        "role": "Gaming Journalist · LoL Specialist",
+        "bullets": [
+          "Covered League of Legends competitive scene as specialist journalist",
+          "Produced match analyses, player profiles, and tournament deep-dives"
+        ],
+        "tags": [
+          { "label": "Esports",           "type": "domain" },
+          { "label": "League of Legends", "type": "domain" }
+        ]
+      },
+      {
+        "period": "2022 – 2023",
+        "type": "Full-time",
+        "company": "VR Storm Studio",
+        "role": "Unity Developer",
+        "bullets": [
+          "Developed VR experiences and interactive applications in Unity",
+          "Implemented networked multiplayer features using Photon Fusion",
+          "Worked on gameplay systems, VR locomotion, and user interactions"
+        ],
+        "tags": [
+          { "label": "Unity",          "type": "engine" },
+          { "label": "C#",             "type": "language" },
+          { "label": "VR Development", "type": "domain" },
+          { "label": "Photon Fusion",  "type": "library" }
+        ]
+      }
+    ]
+  },
+
+  "projects": {
+    "sectionLabel": "Personal Projects",
+    "heading": "Things I build",
+    "headingAccent": "for love.",
+    "items": [
+      {
+        "id": "orbital-duel",
+        "title": "Orbital Duel",
+        "genre": "Multiplayer PvP Shooter",
+        "status": "finished",
+        "statusLabel": "Finished",
+        "screenshotLabel": "orbital duel — gameplay screenshot",
+        "description": "A spaceship PvP shooter where movement is constrained to orbits — ships rotate around a gravitational centre and shift lanes inward or outward to attack.",
+        "techs": [
+          { "label": "Unity",        "shortLabel": "Unity",              "desc": "Game engine used for the entire project — rendering, physics, input, and all gameplay systems." },
+          { "label": "C#",           "shortLabel": "C#",                 "desc": "Primary language for all gameplay logic, movement systems, and game state management." },
+          { "label": "Photon Quantum","shortLabel": "Photon\nQuantum",   "desc": "Deterministic networking framework ensuring pixel-perfect, lag-free multiplayer across all clients." },
+          { "label": "Multiplayer Architecture","shortLabel": "Multi-\nplayer", "desc": "Designed around a server-authoritative loop — all orbital positions and combat resolved deterministically." },
+          { "label": "Retro Pixel Aesthetic","shortLabel": "Retro\nArt",  "desc": "Custom pixel-style visuals to give the game a classic arcade feel while running on modern netcode." }
+        ]
+      },
+      {
+        "id": "spell-brawl",
+        "title": "Spell Brawl",
+        "genre": "Multiplayer Platformer",
+        "status": "active",
+        "statusLabel": "In Development",
+        "screenshotLabel": "spell brawl — fight phase",
+        "description": "A platformer brawler with a unique two-phase loop — draft spells into your spellbook during Pick phase, then unleash them in order during Fight phase.",
+        "techs": [
+          { "label": "Unity",    "shortLabel": "Unity",          "desc": "Full game engine foundation — handles 2D physics, scene management, and all rendering." },
+          { "label": "C#",       "shortLabel": "C#",             "desc": "All gameplay systems — phase management, spellbook logic, ability sequencing, and player controllers." },
+          { "label": "VContainer","shortLabel": "VCon-\ntainer", "desc": "Dependency injection framework — decouples systems so the Fight and Pick phases are independently testable." },
+          { "label": "UniTask",  "shortLabel": "UniTask",        "desc": "Async/await framework for Unity — drives phase transitions, ability animations, and UI sequences without coroutines." },
+          { "label": "DOTween",  "shortLabel": "DO\nTween",      "desc": "Animation library for spell effects, UI transitions, and the satisfying feel of the spellbook drafting UI." },
+          { "label": "Multiplayer","shortLabel": "Multi-\nplayer","desc": "Networked game loop synchronising the Pick and Fight phases across all connected players in real time." }
+        ]
+      },
+      {
+        "id": "plush-keeper",
+        "title": "Plush Keeper",
+        "genre": "Story-Driven Simulator",
+        "status": "active",
+        "statusLabel": "In Development",
+        "screenshotLabel": "plush keeper — shop interior",
+        "description": "A warm emotional simulator — run a plush shop inherited from your estranged father, build a relationship through daily shop life, and discover why the hobby matters.",
+        "techs": [
+          { "label": "Unity",    "shortLabel": "Unity",        "desc": "Engine powering the cozy shop sim — 2D scene management, save system, and all visual presentation." },
+          { "label": "C#",       "shortLabel": "C#",           "desc": "Shop logic, inventory systems, narrative state machine, and character interaction systems." },
+          { "label": "DOTween",  "shortLabel": "DO\nTween",    "desc": "Animates the shop's cozy feel — plush bounces, dialogue popups, and gentle UI transitions." },
+          { "label": "Narrative Design","shortLabel": "Narra-\ntive", "desc": "Story unfolds through shop interactions — relationship with the father deepens as the player progresses days." },
+          { "label": "Blender",  "shortLabel": "Blender",      "desc": "Used for 3D asset modelling of the plush characters and shop props that define the game's visual identity." }
+        ]
+      }
+    ]
+  },
+
+  "skills": {
+    "sectionLabel": "Stack",
+    "heading": "Everything I",
+    "headingLine2": "work with.",
+    "subtitle": "The engines, libraries, patterns and tools I reach for.",
+    "groups": [
+      {
+        "label": "Engines & Languages",
+        "items": [
+          { "label": "Unity",      "type": "engine" },
+          { "label": "C#",         "type": "language" },
+          { "label": "Blender",    "type": "tool" },
+          { "label": "Photoshop",  "type": "tool" }
+        ]
+      },
+      {
+        "label": "Libraries & Frameworks",
+        "items": [
+          { "label": "UniTask",        "type": "library" },
+          { "label": "VContainer",     "type": "library" },
+          { "label": "DOTween",        "type": "library" },
+          { "label": "LeanTween",      "type": "library" },
+          { "label": "Photon Fusion",  "type": "library" },
+          { "label": "Photon Quantum", "type": "library" }
+        ]
+      },
+      {
+        "label": "Domains & Patterns",
+        "items": [
+          { "label": "AR Development",      "type": "domain" },
+          { "label": "VR Development",      "type": "domain" },
+          { "label": "Multiplayer",         "type": "domain" },
+          { "label": "UI Systems",          "type": "domain" },
+          { "label": "Editor Tooling",      "type": "domain" },
+          { "label": "Dependency Injection","type": "pattern" },
+          { "label": "Async Programming",   "type": "pattern" },
+          { "label": "Clean Architecture",  "type": "pattern" }
+        ]
+      }
+    ]
+  },
+
+  "contact": {
+    "sectionLabel": "Contact",
+    "heading": "Let's make",
+    "headingAccent": "something.",
+    "subtitle": "Open to new roles in game development. Based in Hungary, open to remote.",
+    "email": {
+      "user": "morlang",
+      "domain": "email.com"
+    },
+    "links": [
+      { "label": "LinkedIn", "href": "#" },
+      { "label": "itch.io",  "href": "#" }
+    ],
+    "footerLine": "© 2026 Mór Láng · Unity Developer · Hungary"
+  }
+}
