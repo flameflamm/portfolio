@@ -46,49 +46,77 @@
     "headingAccent": "worked.",
     "items": [
       {
-        "period": "2025 – Present",
+        "period": "2025 – 2026",
         "type": "Full-time",
-        "company": "Móra-BOOKR Kft.",
-        "role": "Unity UI & Tools Programmer",
+        "company": "Móra-BOOKR Kids",
+        "role": "Unity Developer",
         "bullets": [
-          "Developing performant, scalable UI systems using Unity's UI Toolkit and custom tooling",
-          "Architecting editor tools to accelerate the content pipeline for children's interactive books",
-          "Implementing dependency injection patterns with VContainer for clean, testable code",
-          "Async programming with UniTask for non-blocking asset loading and animations"
+          "Implemented UI features, localisation, and custom UI components across the company's product lineup",
+          "Designed and built a drag-and-drop graph editor extension for the in-house content-creator app, enabling branching-story authoring",
+          "Built foundational UI infrastructure used across the product line: BOOKR Tween (an in-house tweening system) and a shader-based corner-rounding UI primitive, both with inspector tooling",
+          "Designed and built a reusable theming system with per-product colour schemes and optional sub-modes (e.g. light/dark)"
         ],
         "tags": [
-          { "label": "Unity",     "type": "engine" },
-          { "label": "C#",        "type": "language" },
-          { "label": "UniTask",   "type": "library" },
-          { "label": "VContainer","type": "library" },
-          { "label": "DOTween",   "type": "library" }
+          { "label": "Unity",          "type": "engine" },
+          { "label": "C#",             "type": "language" },
+          { "label": "UI Systems",     "type": "domain" },
+          { "label": "Editor Tooling", "type": "domain" },
+          { "label": "Shaders",        "type": "tool" }
         ]
       },
       {
         "period": "2024",
         "type": "Full-time",
-        "company": "Prostep Consultancy Kft.",
-        "role": "Unity AR & Tools Programmer",
+        "company": "Multilearn · Prostep",
+        "role": "AR & Tools Engineer",
         "bullets": [
-          "Built augmented reality experiences for enterprise clients",
-          "Created custom Unity editor tools to streamline artist and designer workflows",
-          "Collaborated cross-functionally with design and product teams on AR pipelines"
+          "Built a custom Unity Timeline extension for animating complex parent-child hierarchies — a gap in Timeline's native capability",
+          "Built a separate TMP Text Timeline extension for text-transition handling, plus content-creator-facing editor tooling around both, cutting per-animation creation time by ~60%",
+          "Investigated migration of the company's legacy AR app (printed-book marker tracking with 3D animated overlays) to a modern AR stack and Unity Addressables-based content delivery"
         ],
         "tags": [
-          { "label": "Unity",         "type": "engine" },
-          { "label": "C#",            "type": "language" },
-          { "label": "AR Development","type": "domain" },
-          { "label": "Photoshop",     "type": "tool" }
+          { "label": "Unity",          "type": "engine" },
+          { "label": "C#",             "type": "language" },
+          { "label": "Blender",        "type": "tool" },
+          { "label": "AR Development", "type": "domain" },
+          { "label": "Editor Tooling", "type": "domain" }
         ]
       },
+      {
+        "period": "2022 – 2023",
+        "type": "Full-time",
+        "company": "VR Storm Studio",
+        "role": "Software Developer",
+        "bullets": [
+          "Built the authoring workspace and state synchronisation for Mentis.Live, a team-built browser-based editor for OSH VR training content",
+          "Retrofitted VoxSys with input abstraction, weapon handling and rig swapping, letting PC players join existing VR sessions in this team-built shooter",
+          "For an AR virtual pet game, designed and built the behaviour stack — a ScriptableObject state machine integrated with Unity's animation system, with designer-facing editor tooling",
+          "Implemented gameplay UI across projects with LeanTween-animated elements and custom-built widgets"
+        ],
+        "tags": [
+          { "label": "Unity",          "type": "engine" },
+          { "label": "C#",             "type": "language" },
+          { "label": "JavaScript",     "type": "language" },
+          { "label": "Photon Fusion",  "type": "library" },
+          { "label": "VR Development", "type": "domain" }
+        ]
+      }
+    ]
+  },
+
+  "relatedExperience": {
+    "sectionLabel": "Beyond Engineering",
+    "heading": "Related",
+    "headingAccent": "experience.",
+    "items": [
       {
         "period": "2024",
         "type": "Part-time",
         "company": "esport1",
-        "role": "Gaming Journalist · LoL Specialist",
+        "role": "Video Game Journalist · League of Legends focus",
         "bullets": [
-          "Covered League of Legends competitive scene as specialist journalist",
-          "Produced match analyses, player profiles, and tournament deep-dives"
+          "Sole writer for League of Legends coverage at one of Hungary's leading gaming outlets",
+          "Patch analysis, esports event coverage (MSI 2024), and explainer pieces on the lane-swap meta and fan-rework concepts"
         ],
         "tags": [
           { "label": "Esports",           "type": "domain" },
@@ -96,20 +124,18 @@
         ]
       },
       {
-        "period": "2022 – 2023",
-        "type": "Full-time",
-        "company": "VR Storm Studio",
-        "role": "Unity Developer",
+        "period": "2017 – 2018",
+        "type": "Volunteer · indie team",
+        "company": "Lawnmower Games",
+        "role": "Unity Programmer",
         "bullets": [
-          "Developed VR experiences and interactive applications in Unity",
-          "Implemented networked multiplayer features using Photon Fusion",
-          "Worked on gameplay systems, VR locomotion, and user interactions"
+          "Sole programmer for the team — built a mobile idle clicker game end-to-end",
+          "Prototyped multiple multiplayer game concepts in Photon PUN 2"
         ],
         "tags": [
-          { "label": "Unity",          "type": "engine" },
-          { "label": "C#",             "type": "language" },
-          { "label": "VR Development", "type": "domain" },
-          { "label": "Photon Fusion",  "type": "library" }
+          { "label": "Unity",        "type": "engine" },
+          { "label": "C#",           "type": "language" },
+          { "label": "Photon PUN 2", "type": "library" }
         ]
       }
     ]
@@ -224,11 +250,8 @@
       "domain": "gmail.com"
     },
     "links": [
-      {
-        "label": "LinkedIn",
-        "href": "https://www.linkedin.com/in/mor-lang"
-      },
-      { "label": "itch.io",  "href": "#" }
+      { "label": "LinkedIn", "href": "https://linkedin.com/in/mor-lang" },
+      { "label": "mor-lang.dev",  "href": "https://mor-lang.dev" }
     ],
     "footerLine": "© 2026 Mór Láng · Unity Developer · Hungary"
   }

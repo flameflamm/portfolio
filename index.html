@@ -102,6 +102,10 @@
     }
     .hero-name em {
       font-style: italic;
+      display: inline-block;
+      padding: 0.2em 0.3em 0.35em 0.15em;
+      margin: -0.2em -0.3em -0.35em -0.15em;
+      line-height: 1;
       background: linear-gradient(90deg, oklch(82% 0.12 245) 0%, oklch(48% 0.28 245) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
@@ -157,9 +161,12 @@
 
     /* ── Experience ── */
     #experience { background: oklch(7% 0.012 245); }
+    #related { background: oklch(7% 0.012 245); padding-top: 48px; }
+    #related .exp-heading span { background: linear-gradient(90deg, oklch(85% 0.14 80) 0%, oklch(58% 0.22 60) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    #related .section-label { color: var(--accent); }
     .exp-inner { max-width: 1000px; margin: 0 auto; }
     .exp-heading { font-family: 'DM Serif Display', serif; font-size: clamp(40px,5vw,64px); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 64px; line-height: 1.05; }
-    .exp-heading span { background: linear-gradient(90deg, oklch(82% 0.12 245) 0%, oklch(48% 0.28 245) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
+    .exp-heading span { display: inline-block; padding: 0.2em 0.35em 0.38em 0.15em; margin: -0.2em -0.35em -0.38em -0.15em; line-height: 1; background: linear-gradient(90deg, oklch(82% 0.12 245) 0%, oklch(48% 0.28 245) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
     .exp-list { display: flex; flex-direction: column; }
     .exp-item { display: grid; grid-template-columns: 220px 1fr; gap: 40px; padding: 40px 0; border-top: 1px solid oklch(18% 0.015 245); transition: background 0.2s; }
     .exp-item:last-child { border-bottom: 1px solid oklch(18% 0.015 245); }
@@ -183,7 +190,7 @@
     #projects { background: var(--dark); }
     .projects-intro { max-width: 1000px; margin: 0 auto; padding: 120px 48px 80px; }
     .projects-heading { font-family: 'DM Serif Display', serif; font-size: clamp(40px,5vw,64px); font-weight: 400; letter-spacing: -0.02em; margin-bottom: 64px; line-height: 1.05; }
-    .projects-heading span { background: linear-gradient(90deg, oklch(85% 0.14 80) 0%, oklch(58% 0.22 60) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
+    .projects-heading span { display: inline-block; padding: 0.2em 0.35em 0.38em 0.225em; margin: -0.2em -0.35em -0.38em -0.225em; line-height: 1; background: linear-gradient(90deg, oklch(85% 0.14 80) 0%, oklch(58% 0.22 60) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
     .scroller-track { position: relative; height: 180vh; }
     .project-sticky-scene { position: sticky; top: 0; height: 100vh; overflow: hidden; display: block; }
     .sticky-screenshot {
@@ -246,7 +253,7 @@
     /* ── Contact ── */
     #contact { background: #fff; color: var(--ink); text-align: center; padding: 100px 48px 80px; }
     .contact-heading { font-family: 'DM Serif Display', serif; font-size: clamp(40px,5vw,64px); font-weight: 400; letter-spacing: -0.03em; line-height: 1.0; margin-bottom: 20px; color: var(--ink); }
-    .contact-heading em { background: linear-gradient(90deg, oklch(82% 0.12 245) 0%, oklch(48% 0.28 245) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .contact-heading em { display: inline-block; padding: 0.2em 0.35em 0.38em 0.15em; margin: -0.2em -0.35em -0.38em -0.15em; line-height: 1; background: linear-gradient(90deg, oklch(82% 0.12 245) 0%, oklch(48% 0.28 245) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .contact-sub { font-size: 17px; color: var(--ink2); margin-bottom: 48px; max-width: 480px; margin-left: auto; margin-right: auto; }
     .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 72px; }
     .contact-link { padding: 14px 28px; border: 1.5px solid oklch(80% 0.01 240); border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color 0.2s, background 0.2s; }
@@ -254,6 +261,157 @@
     .contact-link.primary { background: var(--ink); color: #fff; border-color: var(--ink); }
     .contact-link.primary:hover { background: oklch(22% 0.01 240); }
     .footer-line { font-size: 12px; color: oklch(65% 0.01 240); }
+
+    /* ── Mobile nav hamburger ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 200;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      background: oklch(9% 0.015 245);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-family: 'DM Serif Display', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: color 0.2s;
+    }
+    .nav-drawer a:hover { color: oklch(72% 0.16 80); }
+    .nav-drawer a.cta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 32px;
+      background: var(--accent);
+      border-radius: 999px;
+      letter-spacing: 0;
+    }
+
+    /* ── Mobile project cards ── */
+    .mobile-project-card {
+      display: none;
+      margin: 0 20px 24px;
+      border: 1px solid oklch(20% 0.015 245);
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--dark2);
+    }
+    .mobile-project-img {
+      height: 180px;
+      background: repeating-linear-gradient(-45deg, oklch(12% 0.015 245) 0px, oklch(12% 0.015 245) 14px, oklch(16% 0.015 245) 14px, oklch(16% 0.015 245) 28px);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .mobile-project-img span { font-family: monospace; font-size: 12px; color: oklch(38% 0.01 240); }
+    .mobile-project-info { padding: 28px 24px; }
+    .mobile-project-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+    .mobile-project-title { font-family: 'DM Serif Display', serif; font-size: 26px; font-weight: 400; letter-spacing: -0.02em; color: #fff; margin-bottom: 10px; }
+    .mobile-project-desc { font-size: 14px; line-height: 1.7; color: oklch(62% 0.008 240); margin-bottom: 16px; }
+    .mobile-project-techs { display: flex; flex-wrap: wrap; gap: 6px; }
+    .mobile-project-techs .tag {
+      background: oklch(18% 0.06 245);
+      color: oklch(72% 0.14 245);
+      border-color: oklch(28% 0.08 245);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .mobile-project-techs .tag.active {
+      background: oklch(28% 0.10 245);
+      border-color: oklch(72% 0.16 80);
+      color: #fff;
+    }
+    .mobile-tech-desc {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: oklch(11% 0.015 245);
+      border: 1px solid oklch(22% 0.02 245);
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: oklch(72% 0.008 240);
+      display: none;
+    }
+    .mobile-tech-desc.visible { display: block; }
+    .mobile-tech-desc-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 6px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      /* Nav */
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      /* Hero */
+      #hero { padding: 100px 24px 72px; }
+      .hero-name { font-size: clamp(56px, 14vw, 80px); }
+      .hero-sub { font-size: 16px; margin-bottom: 36px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-ghost { width: 100%; max-width: 280px; text-align: center; }
+
+      /* About */
+      section { padding: 72px 24px; }
+      #about { grid-template-columns: 1fr; gap: 40px; }
+      .about-headline { font-size: clamp(30px, 8vw, 42px); }
+      .about-body { font-size: 15px; }
+
+      /* Experience */
+      .exp-heading { font-size: clamp(32px, 8vw, 48px); margin-bottom: 40px; }
+      .exp-item { grid-template-columns: 1fr; gap: 8px; padding: 28px 0; }
+      .exp-meta { display: flex; gap: 12px; align-items: baseline; }
+      .exp-company { font-size: 22px; }
+      .exp-bullets li { font-size: 14px; }
+
+      /* Projects — hide scroll-jack, show cards */
+      .projects-intro { padding: 72px 24px 40px; }
+      .projects-heading { font-size: clamp(32px, 8vw, 48px); margin-bottom: 0; }
+      .scroller-track { display: none; }
+      .mobile-project-card { display: block; }
+
+      /* Skills */
+      #skills { padding: 72px 24px; }
+      .skills-heading { font-size: clamp(30px, 8vw, 44px); }
+      .skills-sub { font-size: 15px; margin-bottom: 40px; }
+
+      /* Contact */
+      #contact { padding: 72px 24px 60px; }
+      .contact-heading { font-size: clamp(34px, 8vw, 52px); }
+      .contact-sub { font-size: 15px; }
+      .contact-links { flex-direction: column; align-items: center; gap: 12px; margin-bottom: 48px; }
+      .contact-link { width: 100%; max-width: 280px; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -262,7 +420,13 @@
 <nav id="main-nav">
   <div class="nav-logo" id="nav-logo"></div>
   <div class="nav-links" id="nav-links"></div>
+  <div class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+
+<!-- Mobile full-screen drawer -->
+<div class="nav-drawer" id="nav-drawer"></div>
 
 <section id="hero">
   <div class="hero-bg"></div>
@@ -298,12 +462,21 @@
   </div>
 </section>
 
+<section id="related">
+  <div class="exp-inner">
+    <div class="section-label reveal" id="related-label"></div>
+    <h2 class="exp-heading reveal reveal-delay-1" id="related-heading"></h2>
+    <div class="exp-list" id="related-list"></div>
+  </div>
+</section>
+
 <div id="projects">
   <div class="projects-intro">
     <div class="section-label reveal" id="projects-label"></div>
     <h2 class="projects-heading reveal reveal-delay-1" id="projects-heading"></h2>
   </div>
   <div id="projects-tracks"></div>
+  <div id="projects-mobile" style="padding-bottom: 48px;"></div>
 </div>
 
 <section id="skills">
@@ -345,6 +518,32 @@ function buildNav(nav) {
   const cta = el('a', 'nav-cta', nav.cta.label);
   cta.href = nav.cta.href;
   linksEl.appendChild(cta);
+
+  // Mobile drawer — same links, different presentation
+  const drawer = document.getElementById('nav-drawer');
+  nav.links.forEach(l => {
+    const a = el('a', '', l.label);
+    a.href = l.href;
+    drawer.appendChild(a);
+  });
+  const drawerCta = el('a', 'cta', nav.cta.label);
+  drawerCta.href = nav.cta.href;
+  drawer.appendChild(drawerCta);
+
+  // Hamburger toggle
+  const burger = document.getElementById('nav-hamburger');
+  function closeDrawer() {
+    burger.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  burger.addEventListener('click', () => {
+    const isOpen = burger.classList.toggle('open');
+    drawer.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  // Close drawer when a link is tapped
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 }
 
 function buildHero(hero) {
@@ -364,7 +563,7 @@ function buildHero(hero) {
 function buildAbout(about) {
   document.getElementById('about-label').textContent = about.sectionLabel;
   document.getElementById('about-headline').innerHTML =
-    about.headline + '<br /><em style="font-style:italic;display:inline-block;background:linear-gradient(90deg,oklch(85% 0.14 80) 0%,oklch(58% 0.22 60) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">'
+    about.headline + '<br /><em style="font-style:italic;display:inline-block;padding:0.2em 0.35em 0.38em 0.15em;margin:-0.2em -0.35em -0.38em -0.15em;line-height:1;background:linear-gradient(90deg,oklch(85% 0.14 80) 0%,oklch(58% 0.22 60) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">'
     + about.headlineAccent + '</em>';
   const body = document.getElementById('about-body');
   about.paragraphs.forEach(p => body.appendChild(el('p', '', p)));
@@ -377,12 +576,8 @@ function buildAbout(about) {
   });
 }
 
-function buildExperience(exp) {
-  document.getElementById('exp-label').textContent = exp.sectionLabel;
-  document.getElementById('exp-heading').innerHTML =
-    exp.heading + '<br /><span>' + exp.headingAccent + '</span>';
-  const list = document.getElementById('exp-list');
-  exp.items.forEach(item => {
+function buildExperienceList(items, list) {
+  items.forEach(item => {
     const row = el('div', 'exp-item reveal');
     const meta = el('div', 'exp-meta');
     meta.appendChild(el('div', 'exp-period', item.period));
@@ -400,6 +595,21 @@ function buildExperience(exp) {
     row.appendChild(body);
     list.appendChild(row);
   });
+}
+
+function buildExperience(exp) {
+  document.getElementById('exp-label').textContent = exp.sectionLabel;
+  document.getElementById('exp-heading').innerHTML =
+    exp.heading + '<br /><span>' + exp.headingAccent + '</span>';
+  buildExperienceList(exp.items, document.getElementById('exp-list'));
+}
+
+function buildRelatedExperience(rel) {
+  if (!rel) return;
+  document.getElementById('related-label').textContent = rel.sectionLabel;
+  document.getElementById('related-heading').innerHTML =
+    rel.heading + '<br /><span>' + rel.headingAccent + '</span>';
+  buildExperienceList(rel.items, document.getElementById('related-list'));
 }
 
 function buildProjectTrack(project, i) {
@@ -473,6 +683,59 @@ function buildProjects(projects) {
     projects.heading + '<br /><span>' + projects.headingAccent + '</span>';
   const container = document.getElementById('projects-tracks');
   projects.items.forEach((p, i) => container.appendChild(buildProjectTrack(p, i)));
+
+  // Mobile cards — simpler, tap-friendly alternative shown only at narrow widths
+  const mobile = document.getElementById('projects-mobile');
+  projects.items.forEach(p => {
+    const card = el('div', 'mobile-project-card reveal');
+    const img = el('div', 'mobile-project-img');
+    img.appendChild(el('span', '', p.screenshotLabel));
+    card.appendChild(img);
+
+    const info = el('div', 'mobile-project-info');
+    const meta = el('div', 'mobile-project-meta');
+    meta.appendChild(el('span', 'status-dot status-' + p.status, p.statusLabel));
+    meta.appendChild(el('span', 'project-genre', p.genre));
+    info.appendChild(meta);
+    info.appendChild(el('div', 'mobile-project-title', p.title));
+    info.appendChild(el('div', 'mobile-project-desc', p.description));
+    const techs = el('div', 'mobile-project-techs');
+    p.techs.forEach(t => {
+      const tag = el('span', 'tag', t.label);
+      tag.dataset.title = t.label;
+      tag.dataset.desc  = t.desc;
+      techs.appendChild(tag);
+    });
+    info.appendChild(techs);
+
+    // Tappable description panel
+    const descPanel = el('div', 'mobile-tech-desc');
+    const descLabel = el('div', 'mobile-tech-desc-label', 'Tap a tag above');
+    const descBody  = el('div', '', 'See how each technology is used in this project.');
+    descPanel.appendChild(descLabel);
+    descPanel.appendChild(descBody);
+    info.appendChild(descPanel);
+
+    // Wire taps
+    const tagEls = techs.querySelectorAll('.tag');
+    tagEls.forEach(tag => {
+      tag.addEventListener('click', () => {
+        const wasActive = tag.classList.contains('active');
+        tagEls.forEach(t => t.classList.remove('active'));
+        if (wasActive) {
+          descPanel.classList.remove('visible');
+        } else {
+          tag.classList.add('active');
+          descLabel.textContent = tag.dataset.title;
+          descBody.textContent = tag.dataset.desc;
+          descPanel.classList.add('visible');
+        }
+      });
+    });
+
+    card.appendChild(info);
+    mobile.appendChild(card);
+  });
 }
 
 function buildSkills(skills) {
@@ -635,6 +898,7 @@ fetch('portfolio-content.json')
     buildHero(data.hero);
     buildAbout(data.about);
     buildExperience(data.experience);
+    buildRelatedExperience(data.relatedExperience);
     buildProjects(data.projects);
     buildSkills(data.skills);
     buildContact(data.contact);
