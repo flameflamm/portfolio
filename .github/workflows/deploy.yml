@@ -41,7 +41,7 @@ jobs:
 
       # Regenerates articles/index.json and cikk/*.html from articles/*.md
       - name: Build site
-        run: node build.mjs
+        run: node FakeSite/build.mjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v4
