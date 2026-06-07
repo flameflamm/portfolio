@@ -1,33 +1,57 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+# .github/workflows/deploy.yml
+# Builds the site (regenerates the manifest + article preview pages) and
+# publishes it to GitHub Pages on every push to the main branch.
+#
+# ONE-TIME SETUP in your repo: Settings → Pages → "Build and deployment" →
+# Source → choose "GitHub Actions". (Not the older "Deploy from a branch".)
+#
+# After that, your whole publishing workflow is just:  git push.
 
-name: Node.js Package
+name: Deploy to GitHub Pages
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: [main]      # change to "master" if that's your default branch
+  workflow_dispatch:       # also lets you run it manually from the Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deploy at a time; newer pushes cancel an in-progress run.
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
+      - name: Checkout
+        uses: actions/checkout@v4
 
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+      # Regenerates articles/index.json and cikk/*.html from articles/*.md
+      - name: Build site
+        run: node build.mjs
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
+
+      # Upload the whole project folder as the Pages artifact.
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy
+        id: deploy
+        uses: actions/deploy-pages@v4
