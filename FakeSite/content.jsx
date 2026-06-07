@@ -80,6 +80,8 @@ function mdToHtml(md) {
 // ── Date helpers ────────────────────────────────────────────────────────────
 const HU_MONTHS = ["január", "február", "március", "április", "május", "június",
   "július", "augusztus", "szeptember", "október", "november", "december"];
+const HU_DAYS = ["vasárnap", "hétfő", "kedd", "szerda", "csütörtök", "péntek", "szombat"];
+const _pad2 = (n) => (n < 10 ? "0" + n : "" + n);
 function formatHuDate(iso) {
   const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || "");
   if (!m) return iso || "";
@@ -89,9 +91,24 @@ function todayStr() {
   const d = new Date();
   return `${d.getFullYear()}. ${HU_MONTHS[d.getMonth()]} ${d.getDate()}.`;
 }
+// Long form with weekday, e.g. "2026. június 7., vasárnap"
+function huDateLong(d) {
+  d = d || new Date();
+  return `${d.getFullYear()}. ${HU_MONTHS[d.getMonth()]} ${d.getDate()}., ${HU_DAYS[d.getDay()]}`;
+}
+// Hungarian name-day(s) for a date (defaults to today)
+function nameDayFor(d) {
+  d = d || new Date();
+  const key = _pad2(d.getMonth() + 1) + "-" + _pad2(d.getDate());
+  return (window.NAMEDAYS && window.NAMEDAYS[key]) || "";
+}
 function estimateRead(text) {
   const words = String(text || "").trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(words / 180));
+}
+// True when an `img` value is a real file path rather than placeholder caption text.
+function isImagePath(s) {
+  return typeof s === "string" && /\.(jpe?g|png|webp|gif|avif)$/i.test(s.trim());
 }
 
 // ── In-memory store (populated after the manifest loads) ──────────────────────
@@ -155,7 +172,7 @@ function buildMarkdownFile(d) {
 
 Object.assign(window, {
   SECTIONS, NAV_EXTRA, SECTION_LABEL,
-  parseFrontMatter, mdToHtml, formatHuDate, todayStr, estimateRead, slugify,
+  parseFrontMatter, mdToHtml, formatHuDate, todayStr, huDateLong, nameDayFor, estimateRead, isImagePath, slugify,
   setManifest, getArticles, getMeta, byId, byCat,
   loadManifest, loadArticleBody, buildMarkdownFile,
 });

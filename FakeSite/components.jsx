@@ -1,8 +1,21 @@
 // components.jsx — Szabad Nemzet shared UI
 
 // ── Placeholder image ─────────────────────────────────────────
-function Ph({ label, kind = "wide", style }) {
+function Ph({ label, kind = "wide", style, alt = "" }) {
+  if (isImagePath(label)) {
+    return (
+      <div className={"ph ph-has-img " + kind} style={style}>
+        <img src={label} alt={alt} loading="lazy" />
+      </div>
+    );
+  }
   return <div className={"ph " + kind} data-label={label} style={style} aria-hidden="true" />;
+}
+
+// ── Brand mark (the Szabad Nemzet logo image) ─────────────────
+function BrandMark({ size = 50 }) {
+  const s = Math.round(size * 1.2); // 20% larger on-page
+  return <span className="brandmark" role="img" aria-label="Szabad Nemzet" style={{ width: s + "px", height: s + "px" }} />;
 }
 
 // ── Raised battle-flag emblem (bold, martial, traditional) ────
@@ -66,20 +79,7 @@ function Tricolor() {
 function Logo({ onClick, flagSize = 50, variant = "emblem" }) {
   return (
     <a className="logo" onClick={onClick} aria-label="Szabad Nemzet — címlap">
-      {variant === "image" ? (
-        <image-slot
-          id="sn-logo-mark"
-          class="logo-img"
-          shape="rounded"
-          radius="3"
-          placeholder="Logó"
-          style={{ width: flagSize * 1.2 + "px", height: flagSize * 1.2 + "px" }}
-        ></image-slot>
-      ) : variant === "emblem" ? (
-        <Emblem size={flagSize} />
-      ) : (
-        <HandFlag size={flagSize * 1.18} />
-      )}
+      <BrandMark size={flagSize} />
       <span className="logo-word">Szabad <span className="nemzet">Nemzet</span></span>
     </a>
   );
@@ -107,18 +107,38 @@ function ThemeToggle({ dark, onToggle }) {
 
 // ── Utility bar ───────────────────────────────────────────────
 function UtilBar({ dark, onToggleDark }) {
+  const nameday = nameDayFor();
+  // Live Budapest temperature via Open-Meteo (no key, CORS-friendly).
+  // Last value is cached so it appears instantly on reload.
+  const [temp, setTemp] = React.useState(() => {
+    const c = localStorage.getItem("sn_temp");
+    return c == null ? null : Number(c);
+  });
+  React.useEffect(() => {
+    let live = true;
+    fetch("https://api.open-meteo.com/v1/forecast?latitude=47.4979&longitude=19.0402&current_weather=true")
+      .then((r) => r.json())
+      .then((d) => {
+        const tC = d && d.current_weather && d.current_weather.temperature;
+        if (live && typeof tC === "number") {
+          const r = Math.round(tC);
+          setTemp(r);
+          try { localStorage.setItem("sn_temp", String(r)); } catch (e) {}
+        }
+      })
+      .catch(() => {});
+    return () => { live = false; };
+  }, []);
   return (
     <div className="util">
       <div className="wrap">
         <div className="util-left">
           <span className="dot" />
-          <span>2026. június 5., péntek</span>
-          <span className="hide-sm">Budapest · 24°C</span>
-          <span className="hide-sm">Névnap: Fatime, Bonifác</span>
+          <span>{huDateLong()}</span>
+          <span className="hide-sm">Budapest{temp == null ? "" : ` · ${temp}°C`}</span>
+          {nameday && <span className="hide-sm">Névnap: {nameday}</span>}
         </div>
         <div className="util-right">
-          <a href="#elofizetes" onClick={(e) => e.preventDefault()}>Előfizetés</a>
-          <a href="#hirlevel" onClick={(e) => e.preventDefault()}>Hírlevél</a>
           <ThemeToggle dark={dark} onToggle={onToggleDark} />
         </div>
       </div>
@@ -195,7 +215,7 @@ function Meta({ a }) {
 function ColCard({ a, onOpen }) {
   return (
     <article className="card" onClick={() => onOpen(a.id)}>
-      <Ph label={a.img} kind="wide" />
+      <Ph label={a.img} kind="wide" alt={a.title} />
       <span className="kicker">{a.kicker}</span>
       <h3 className="title">{a.title}</h3>
       <p className="dek">{a.dek}</p>
@@ -207,7 +227,7 @@ function ColCard({ a, onOpen }) {
 function ListCard({ a, onOpen, withImg }) {
   return (
     <article className="card" onClick={() => onOpen(a.id)}>
-      {withImg && <Ph label={a.img} kind="sq" />}
+      {withImg && <Ph label={a.img} kind="sq" alt={a.title} />}
       <div>
         <span className="kicker">{a.kicker}</span>
         <h3 className="title">{a.title}</h3>
@@ -226,7 +246,7 @@ function MobileBar({ onMenu, onLogo, logoVariant = "emblem" }) {
         </svg>
       </button>
       <a className="mbar-logo" onClick={onLogo} aria-label="Szabad Nemzet — címlap">
-        <Emblem size={26} />
+        <BrandMark size={30} />
         <span className="logo-word">Szabad <span className="nemzet">Nemzet</span></span>
       </a>
       <button className="mbar-btn" aria-label="Keresés" onClick={(e) => e.preventDefault()}>
@@ -247,14 +267,14 @@ function MobileDrawer({ open, onClose, active, onNav, dark, onToggleDark }) {
       <aside className="drawer" role="dialog" aria-label="Navigáció"
              style={{ transform: open ? "translateX(0)" : "translateX(-102%)" }}>
         <div className="drawer-head">
-          <span className="drawer-brand"><Emblem size={24} /><span className="logo-word">Szabad <span className="nemzet">Nemzet</span></span></span>
+          <span className="drawer-brand"><BrandMark size={26} /><span className="logo-word">Szabad <span className="nemzet">Nemzet</span></span></span>
           <button className="drawer-x" aria-label="Bezárás" onClick={onClose}>
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round">
               <path d="M6 6l12 12M18 6L6 18" />
             </svg>
           </button>
         </div>
-        <div className="drawer-date">{todayStr()} · Budapest 24°C</div>
+        <div className="drawer-date">{huDateLong()}{nameDayFor() ? " · Névnap: " + nameDayFor() : ""}</div>
         <nav className="drawer-nav">
           {SECTIONS.map((s) => (
             <a key={s.id} className={active === s.id ? "active" : ""} href={"#" + s.id}
@@ -265,8 +285,6 @@ function MobileDrawer({ open, onClose, active, onNav, dark, onToggleDark }) {
           ))}
         </nav>
         <div className="drawer-foot">
-          <a href="#elofizetes" className="drawer-cta" onClick={(e) => e.preventDefault()}>Előfizetés</a>
-          <a href="#hirlevel" className="drawer-link" onClick={(e) => e.preventDefault()}>Hírlevél</a>
           <ThemeToggle dark={dark} onToggle={onToggleDark} />
         </div>
       </aside>
@@ -275,5 +293,5 @@ function MobileDrawer({ open, onClose, active, onNav, dark, onToggleDark }) {
 }
 
 Object.assign(window, {
-  Ph, Emblem, HandFlag, FlagMark, Tricolor, Logo, ThemeToggle, UtilBar, Masthead, Nav, Ticker, Meta, ColCard, ListCard, MobileBar, MobileDrawer,
+  Ph, BrandMark, Emblem, HandFlag, FlagMark, Tricolor, Logo, ThemeToggle, UtilBar, Masthead, Nav, Ticker, Meta, ColCard, ListCard, MobileBar, MobileDrawer,
 });

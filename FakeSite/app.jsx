@@ -20,24 +20,6 @@ function MostRead({ onOpen }) {
   );
 }
 
-function Newsletter() {
-  const [done, setDone] = useState(false);
-  return (
-    <div className="nl">
-      <h4>Napi hírlevél</h4>
-      <p>A nap legfontosabb hírei minden reggel a postaládájában. Ingyenes, bármikor lemondható.</p>
-      {done ? (
-        <p style={{ opacity: 1, fontWeight: 600, margin: 0 }}>Köszönjük a feliratkozást! ✓</p>
-      ) : (
-        <form onSubmit={(e) => { e.preventDefault(); setDone(true); }}>
-          <input type="email" placeholder="email@cím.hu" required aria-label="Email cím" />
-          <button type="submit">Feliratkozom</button>
-        </form>
-      )}
-    </div>
-  );
-}
-
 function OpinionCard({ a, onOpen }) {
   const initials = a.author.split(" ").map((w) => w[0]).slice(0, 2).join("");
   return (
@@ -55,7 +37,7 @@ function OpinionCard({ a, onOpen }) {
 function HistoryFeature({ a, onOpen }) {
   return (
     <article className="feat" onClick={() => onOpen(a.id)}>
-      <Ph label={a.img} kind="" />
+      <Ph label={a.img} kind="" alt={a.title} />
       <div className="body">
         <span className="kicker">{a.kicker}</span>
         <h3 className="title">{a.title}</h3>
@@ -76,7 +58,7 @@ function Hero({ lead, side, onOpen }) {
       <div className="wrap">
         <div className="hero-grid">
           <div className="hero-lead card" onClick={() => onOpen(lead.id)}>
-            <Ph label={lead.img} kind="lead" />
+            <Ph label={lead.img} kind="lead" alt={lead.title} />
             <span className="kicker">{lead.kicker}</span>
             <h2 className="hero-title">{lead.title}</h2>
             <p className="hero-dek">{lead.dek}</p>
@@ -134,7 +116,6 @@ function HomePage({ onOpen }) {
             </div>
             <aside className="rail">
               <MostRead onOpen={onOpen} />
-              <Newsletter />
             </aside>
           </div>
         </section>
@@ -194,6 +175,7 @@ function ArticlePage({ id, onOpen, onHome }) {
   const initials = a.author.split(" ").map((w) => w[0]).slice(0, 2).join("");
   const related = (a.related || []).map(byId).filter(Boolean);
   const readMin = (content && content.read) || a.read;
+  const cap = content && content.meta ? content.meta.caption : null;
 
   return (
     <main className="art">
@@ -222,8 +204,10 @@ function ArticlePage({ id, onOpen, onHome }) {
         </div>
 
         <figure className="art-hero">
-          <Ph label={a.img} kind="" />
-          <figcaption className="art-cap">{a.img} — Szabad Nemzet illusztráció</figcaption>
+          <Ph label={a.img} kind="" alt={a.title} />
+          {(cap || !isImagePath(a.img)) && (
+            <figcaption className="art-cap">{cap || a.img} — Szabad Nemzet illusztráció</figcaption>
+          )}
         </figure>
 
         {err ? (
@@ -258,8 +242,8 @@ function ArticlePage({ id, onOpen, onHome }) {
 function Footer({ onLogo, logoVariant = "emblem" }) {
   const cols = [
     { h: "Rovatok", items: ["Belföld", "Vélemény", "Kultúra", "Történelem", "Világ", "Gazdaság"] },
-    { h: "A lapról", items: ["Rólunk", "Impresszum", "Szerzők", "Kapcsolat", "Médiaajánlat"] },
-    { h: "Kövessen", items: ["Hírlevél", "Facebook", "X / Twitter", "YouTube", "RSS"] },
+    { h: "A lapról", items: ["Rólunk", "Impresszum"] },
+    { h: "Kövessen", items: ["Facebook", "RSS"] },
   ];
   return (
     <footer className="foot">
@@ -303,9 +287,6 @@ function Tweaks({ t, setTweak }) {
       <TweakSection label="Irányvonal" />
       <TweakRadio label="Stílus" value={t.direction} options={dirs}
         onChange={(v) => setTweak({ direction: v, ...DIRECTIONS[v].bundle })} />
-      <TweakRadio label="Logó" value={t.logo}
-        options={[{ value: "emblem", label: "Embléma" }, { value: "image", label: "Saját kép" }]}
-        onChange={(v) => setTweak("logo", v)} />
       <TweakSection label="Tipográfia" />
       <TweakSelect label="Címbetűtípus" value={t.headlineFont} options={FONT_OPTIONS}
         onChange={(v) => setTweak("headlineFont", v)} />
@@ -374,6 +355,7 @@ function App() {
 
   const cls = ["sn"];
   if (flags.uppercaseHeads) cls.push("uc-heads");
+  if (flags.dark) cls.push("dark");
 
   return (
     <div className={cls.join(" ")} style={vars}>

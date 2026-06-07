@@ -124,6 +124,10 @@ body { background: #2b2924; }
 .ph.wide { aspect-ratio: 16 / 9; }
 .ph.lead { aspect-ratio: 3 / 2; }
 .ph.sq { aspect-ratio: 1 / 1; }
+.ph.ph-has-img { background-image: none; }
+.ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.brandmark { display: inline-block; flex: none; background: url('images/logo.svg') center / contain no-repeat; }
+.sn.dark .brandmark { background-image: url('images/logo-dark.svg'); }
 
 /* ── Generic card ────────────────────────────────────────────── */
 .kicker { font-family: var(--font-head); font-weight: 700; font-size: .72em; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); display: inline-block; }
