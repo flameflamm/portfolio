@@ -9,6 +9,11 @@
 // ───────────────────────────────────────────────────────────────────────────
 
 // ── Static site config (not content) ─────────────────────────────────────────
+// Deployed base URL — REQUIRED for share links + Open Graph previews to work.
+// Must end with a trailing slash.
+const SITE_BASE = "https://mor-lang.dev/FakeSite/";
+const SITE_NAME = "Szabad Nemzet";
+
 const SECTIONS = [
   { id: "cimlap",     label: "Címlap" },
   { id: "belfold",    label: "Belföld" },
@@ -170,9 +175,32 @@ function buildMarkdownFile(d) {
   return L.join("\n") + "\n" + (d.body || "").trim() + "\n";
 }
 
+// ── Sharing ───────────────────────────────────────────────────────────────────
+// Public URL for an article. Points at a tiny per-article page under /cikk/
+// that carries Open Graph tags (so Facebook shows a real preview) and then
+// forwards the reader into the SPA.
+function shareUrl(id) {
+  return SITE_BASE + "cikk/" + id + ".html";
+}
+// Absolute preview image for an article: the real cover if it has one,
+// otherwise the site logo as a graceful fallback.
+function shareImage(article) {
+  const img = article && article.img;
+  const path = isImagePath(img) ? img : "images/logo.svg";
+  return SITE_BASE + path.replace(/^\/+/, "");
+}
+function facebookShareUrl(id) {
+  return "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl(id));
+}
+function twitterShareUrl(id, title) {
+  return "https://twitter.com/intent/tweet?url=" + encodeURIComponent(shareUrl(id)) +
+    "&text=" + encodeURIComponent(title || "");
+}
+
 Object.assign(window, {
-  SECTIONS, NAV_EXTRA, SECTION_LABEL,
+  SITE_BASE, SITE_NAME, SECTIONS, NAV_EXTRA, SECTION_LABEL,
   parseFrontMatter, mdToHtml, formatHuDate, todayStr, huDateLong, nameDayFor, estimateRead, isImagePath, slugify,
   setManifest, getArticles, getMeta, byId, byCat,
   loadManifest, loadArticleBody, buildMarkdownFile,
+  shareUrl, shareImage, facebookShareUrl, twitterShareUrl,
 });

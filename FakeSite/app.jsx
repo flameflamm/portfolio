@@ -196,9 +196,15 @@ function ArticlePage({ id, onOpen, onHome }) {
             <span className="muted">{a.date}</span>
             <span className="muted">· {readMin} perc</span>
             <span className="art-share">
-              <button aria-label="Megosztás Facebookon">f</button>
-              <button aria-label="Megosztás X-en">𝕏</button>
-              <button aria-label="Link másolása">↗</button>
+              <a href={facebookShareUrl(a.id)} target="_blank" rel="noopener noreferrer"
+                onClick={(e) => { e.preventDefault(); window.open(facebookShareUrl(a.id), "_blank", "noopener,noreferrer"); }}
+                aria-label="Megosztás Facebookon">f</a>
+              <a href={twitterShareUrl(a.id, a.title)} target="_blank" rel="noopener noreferrer"
+                onClick={(e) => { e.preventDefault(); window.open(twitterShareUrl(a.id, a.title), "_blank", "noopener,noreferrer"); }}
+                aria-label="Megosztás X-en">𝕏</a>
+              <button type="button" aria-label="Link másolása" onClick={() => {
+                navigator.clipboard && navigator.clipboard.writeText(shareUrl(a.id));
+              }}>↗</button>
             </span>
           </div>
         </div>
@@ -312,9 +318,27 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const [loadErr, setLoadErr] = useState(null);
 
-  // Load the article manifest once on mount.
+  // Load the article manifest once on mount, then sync route from the URL.
   useEffect(() => {
-    loadManifest().then(() => setLoaded(true)).catch((e) => setLoadErr(e.message || String(e)));
+    loadManifest().then(() => {
+      setLoaded(true);
+      const id = new URLSearchParams(location.search).get("cikk");
+      if (id && byId(id)) {
+        setRoute({ name: "article", id });
+        setActive(byId(id).cat || "cimlap");
+      }
+    }).catch((e) => setLoadErr(e.message || String(e)));
+  }, []);
+
+  // Browser back/forward → re-read the article id from the URL.
+  useEffect(() => {
+    const onPop = () => {
+      const id = new URLSearchParams(location.search).get("cikk");
+      if (id && byId(id)) { setRoute({ name: "article", id }); setActive(byId(id).cat || "cimlap"); }
+      else { setRoute({ name: "home" }); setActive("cimlap"); }
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
   }, []);
 
   // Lock body scroll while the mobile drawer is open
@@ -335,11 +359,13 @@ function App() {
   const openArticle = (id) => {
     setRoute({ name: "article", id });
     setActive(byId(id)?.cat || "cimlap");
+    history.pushState({ cikk: id }, "", "?cikk=" + encodeURIComponent(id));
     window.scrollTo({ top: 0, behavior: "auto" });
   };
   const goHome = () => {
     setRoute({ name: "home" });
     setActive("cimlap");
+    history.pushState({}, "", location.pathname);
     window.scrollTo({ top: 0, behavior: "auto" });
   };
   const onNav = (id) => {

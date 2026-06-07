@@ -247,8 +247,8 @@ body { background: #2b2924; }
 .art-byline .by { font-weight: 700; color: var(--ink); }
 .art-byline .muted { color: var(--ink-soft); }
 .art-share { display: flex; gap: 7px; margin-left: 10px; }
-.art-share button { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft); cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; }
-.art-share button:hover { border-color: var(--accent); color: var(--accent); }
+.art-share button, .art-share a { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft); cursor: pointer; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.art-share button:hover, .art-share a:hover { border-color: var(--accent); color: var(--accent); }
 .art-hero { margin: 26px 0 8px; }
 .art-hero .ph { aspect-ratio: 3 / 1.55; }
 .art-cap { font-size: .74em; color: var(--ink-soft); font-family: ui-monospace, Menlo, monospace; padding: 8px 2px 0; }
