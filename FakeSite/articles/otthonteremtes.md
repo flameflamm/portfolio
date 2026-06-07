@@ -8,7 +8,7 @@ role: belpolitikai szerkesztő
 date: 2026-06-05
 read: 4
 feature: true
-img: articles/images/otthonteremtes.jpg
+img: articles/images/otthonteremtes.webp
 caption: Vezető fotó — új lakónegyed
 related:
   - forint
