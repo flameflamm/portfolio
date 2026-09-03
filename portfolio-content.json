@@ -19,24 +19,42 @@
     "eyebrow": "Unity Developer · Hungary",
     "nameLine1": "Mór",
     "nameLine2": "Láng",
-    "subtitle": "Crafting games and tools in Unity — from VR experiences and AR applications to indie multiplayer games with clean, intentional architecture.",
-    "ctaPrimary":  { "label": "See my work",   "href": "#projects" },
-    "ctaSecondary": { "label": "Get in touch", "href": "#contact" }
+    "subtitle": "I build the engineering layer behind Unity games — editor tooling, UI infrastructure, and multiplayer systems, from VR training platforms to deterministic rollback netcode.",
+    "ctaPrimary": {
+      "label": "See my work",
+      "href": "#projects"
+    },
+    "ctaSecondary": {
+      "label": "Get in touch",
+      "href": "#contact"
+    }
   },
 
   "about": {
     "sectionLabel": "About",
-    "headline": "Building games that",
-    "headlineAccent": "feel right.",
+    "headline": "I build what's",
+    "headlineAccent": "underneath.",
     "paragraphs": [
-      "I've spent years in Unity across a range of disciplines — VR locomotion systems, AR enterprise tools, multiplayer architecture, and performant UI. My focus is always on code that's clean, maintainable, and a joy to build on top of.",
-      "Outside of client work, I'm building indie games that matter to me: deterministic networked shooters, spellcasting brawlers, and a quiet story about plush toys and family. The hobby projects inform the professional ones."
+      "Professional Unity developer since 2022, building in Unity since 2017. My work spans VR training tools, AR content pipelines, multiplayer architecture, and UI infrastructure — the common thread is systems other developers build on top of: editor tools, reusable UI, and networked game state that has to stay correct under real players.",
+      "Outside client work, I build my own projects with the same discipline: Totally Witchin', a multiplayer brawler running on Photon Quantum's deterministic rollback netcode, and a reusable first-person Unity framework — architecture designed to be reused, and already reused twice."
     ],
     "stats": [
-      { "value": "4+",   "label": "Years in Unity" },
-      { "value": "4",    "label": "Professional Roles" },
-      { "value": "3",    "label": "Hobby Games Built" },
-      { "value": "AR·VR","label": "Domains Shipped" }
+      {
+        "value": "2022",
+        "label": "Professional Unity since"
+      },
+      {
+        "value": "2017",
+        "label": "Building in Unity since"
+      },
+      {
+        "value": "~60%",
+        "label": "Iteration Time Cut"
+      },
+      {
+        "value": "AR·VR·Mobile",
+        "label": "Platforms Shipped"
+      }
     ]
   },
 
