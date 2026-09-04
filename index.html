@@ -766,9 +766,9 @@ function buildContact(contact) {
 
   // Email — assembled by JS to avoid scrapers
   const emailLink = el('a', 'contact-link primary');
-  const addr = contact.email.user + '@' + contact.email.domain;
+  const addr = contact.email.address;
   emailLink.href = 'mailto:' + addr;
-  emailLink.textContent = addr;
+  emailLink.textContent = contact.email.label;
   linksEl.appendChild(emailLink);
 
   contact.links.forEach(l => {

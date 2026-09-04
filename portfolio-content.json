@@ -332,8 +332,8 @@
     "headingAccent": "something.",
     "subtitle": "Open to new roles in game development. Based in Hungary, open to remote.",
     "email": {
-      "user": "flamm.flame",
-      "domain": "gmail.com"
+      "label": "Email",
+      "address": "flamm.flame@gmail.com"
     },
     "links": [
       {
