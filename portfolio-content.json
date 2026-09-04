@@ -336,8 +336,14 @@
       "domain": "gmail.com"
     },
     "links": [
-      { "label": "LinkedIn", "href": "https://linkedin.com/in/mor-lang" },
-      { "label": "mor-lang.dev",  "href": "https://mor-lang.dev" }
+      {
+        "label": "LinkedIn",
+        "href": "https://linkedin.com/in/mor-lang"
+      },
+      {
+        "label": "CV",
+        "href": "/MorLang_CV_ENG_New.pdf"
+      }
     ],
     "footerLine": "© 2026 Mór Láng · Unity Developer · Hungary"
   }
