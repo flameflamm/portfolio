@@ -59,7 +59,7 @@
   },
 
   "experience": {
-    "sectionLabel": "Experience",
+    "sectionLabel": "Work Experience",
     "heading": "Where I've",
     "headingAccent": "worked.",
     "items": [
@@ -67,7 +67,7 @@
         "period": "2025 – 2026",
         "type": "Full-time",
         "company": "Móra-BOOKR Kids",
-        "role": "Unity Developer",
+        "role": "Unity Developer · UI & Tools",
         "bullets": [
           "Implemented UI features, localisation, and custom UI components across the company's product lineup",
           "Designed and built a drag-and-drop graph editor extension for the in-house content-creator app, enabling branching-story authoring",
@@ -75,36 +75,66 @@
           "Designed and built a reusable theming system with per-product colour schemes and optional sub-modes (e.g. light/dark)"
         ],
         "tags": [
-          { "label": "Unity",          "type": "engine" },
-          { "label": "C#",             "type": "language" },
-          { "label": "UI Systems",     "type": "domain" },
-          { "label": "Editor Tooling", "type": "domain" },
-          { "label": "Shaders",        "type": "tool" }
+          {
+            "label": "Unity",
+            "type": "engine"
+          },
+          {
+            "label": "C#",
+            "type": "language"
+          },
+          {
+            "label": "UI Systems",
+            "type": "domain"
+          },
+          {
+            "label": "Editor Tooling",
+            "type": "domain"
+          },
+          {
+            "label": "Shaders",
+            "type": "tool"
+          }
         ]
       },
       {
         "period": "2024",
         "type": "Full-time",
         "company": "Multilearn · Prostep",
-        "role": "AR & Tools Engineer",
+        "role": "Unity Developer · AR & Tools",
         "bullets": [
           "Built a custom Unity Timeline extension for animating complex parent-child hierarchies — a gap in Timeline's native capability",
           "Built a separate TMP Text Timeline extension for text-transition handling, plus content-creator-facing editor tooling around both, cutting per-animation creation time by ~60%",
           "Investigated migration of the company's legacy AR app (printed-book marker tracking with 3D animated overlays) to a modern AR stack and Unity Addressables-based content delivery"
         ],
         "tags": [
-          { "label": "Unity",          "type": "engine" },
-          { "label": "C#",             "type": "language" },
-          { "label": "Blender",        "type": "tool" },
-          { "label": "AR Development", "type": "domain" },
-          { "label": "Editor Tooling", "type": "domain" }
+          {
+            "label": "Unity",
+            "type": "engine"
+          },
+          {
+            "label": "C#",
+            "type": "language"
+          },
+          {
+            "label": "Blender",
+            "type": "tool"
+          },
+          {
+            "label": "AR Development",
+            "type": "domain"
+          },
+          {
+            "label": "Editor Tooling",
+            "type": "domain"
+          }
         ]
       },
       {
         "period": "2022 – 2023",
         "type": "Full-time",
         "company": "VR Storm Studio",
-        "role": "Software Developer",
+        "role": "Unity Developer",
         "bullets": [
           "Built the authoring workspace and state synchronisation for Mentis.Live, a team-built browser-based editor for OSH VR training content",
           "Retrofitted VoxSys with input abstraction, weapon handling and rig swapping, letting PC players join existing VR sessions in this team-built shooter",
@@ -112,33 +142,62 @@
           "Implemented gameplay UI across projects with LeanTween-animated elements and custom-built widgets"
         ],
         "tags": [
-          { "label": "Unity",          "type": "engine" },
-          { "label": "C#",             "type": "language" },
-          { "label": "JavaScript",     "type": "language" },
-          { "label": "Photon Fusion",  "type": "library" },
-          { "label": "VR Development", "type": "domain" }
+          {
+            "label": "Unity",
+            "type": "engine"
+          },
+          {
+            "label": "C#",
+            "type": "language"
+          },
+          {
+            "label": "JavaScript",
+            "type": "language"
+          },
+          {
+            "label": "Photon Fusion",
+            "type": "library"
+          },
+          {
+            "label": "VR Development",
+            "type": "domain"
+          },
+          {
+            "label": "AR Development",
+            "type": "domain"
+          },
+          {
+            "label": "Editor Tooling",
+            "type": "domain"
+          }
         ]
       }
     ]
   },
 
   "relatedExperience": {
-    "sectionLabel": "Beyond Engineering",
-    "heading": "Related",
-    "headingAccent": "experience.",
+    "sectionLabel": "Related Experience",
+    "heading": "Writing and",
+    "headingAccent": "early builds.",
     "items": [
       {
         "period": "2024",
-        "type": "Part-time",
-        "company": "esport1",
+        "type": "Full-time",
+        "company": "ESPORT1",
         "role": "Video Game Journalist · League of Legends focus",
         "bullets": [
           "Sole writer for League of Legends coverage at one of Hungary's leading gaming outlets",
           "Patch analysis, esports event coverage (MSI 2024), and explainer pieces on the lane-swap meta and fan-rework concepts"
         ],
         "tags": [
-          { "label": "Esports",           "type": "domain" },
-          { "label": "League of Legends", "type": "domain" }
+          {
+            "label": "Esports",
+            "type": "domain"
+          },
+          {
+            "label": "League of Legends",
+            "type": "domain"
+          }
         ]
       },
       {
@@ -151,9 +210,18 @@
           "Prototyped multiple multiplayer game concepts in Photon PUN 2"
         ],
         "tags": [
-          { "label": "Unity",        "type": "engine" },
-          { "label": "C#",           "type": "language" },
-          { "label": "Photon PUN 2", "type": "library" }
+          {
+            "label": "Unity",
+            "type": "engine"
+          },
+          {
+            "label": "C#",
+            "type": "language"
+          },
+          {
+            "label": "Photon PUN 2",
+            "type": "library"
+          }
         ]
       }
     ]
