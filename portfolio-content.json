@@ -293,34 +293,113 @@
       {
         "label": "Engines & Languages",
         "items": [
-          { "label": "Unity",      "type": "engine" },
-          { "label": "C#",         "type": "language" },
-          { "label": "Blender",    "type": "tool" },
-          { "label": "Photoshop",  "type": "tool" }
+          {
+            "label": "Unity",
+            "type": "engine"
+          },
+          {
+            "label": "C#",
+            "type": "language"
+          }
+        ]
+      },
+      {
+        "label": "Tools",
+        "items": [
+          {
+            "label": "Blender",
+            "type": "tool"
+          },
+          {
+            "label": "Photoshop",
+            "type": "tool"
+          },
+          {
+            "label": "Aseprite",
+            "type": "tool"
+          },
+          {
+            "label": "Rider",
+            "type": "tool"
+          },
+          {
+            "label": "Git (Sourcetree)",
+            "type": "tool"
+          }
         ]
       },
       {
         "label": "Libraries & Frameworks",
         "items": [
-          { "label": "UniTask",        "type": "library" },
-          { "label": "VContainer",     "type": "library" },
-          { "label": "DOTween",        "type": "library" },
-          { "label": "LeanTween",      "type": "library" },
-          { "label": "Photon Fusion",  "type": "library" },
-          { "label": "Photon Quantum", "type": "library" }
+          {
+            "label": "UniTask",
+            "type": "library"
+          },
+          {
+            "label": "VContainer",
+            "type": "library"
+          },
+          {
+            "label": "LeanTween",
+            "type": "library"
+          },
+          {
+            "label": "Photon Fusion",
+            "type": "library"
+          },
+          {
+            "label": "Photon Quantum",
+            "type": "library"
+          },
+          {
+            "label": "PlayFab",
+            "type": "library"
+          },
+          {
+            "label": "Facepunch.Steamworks",
+            "type": "library"
+          }
         ]
       },
       {
         "label": "Domains & Patterns",
         "items": [
-          { "label": "AR Development",      "type": "domain" },
-          { "label": "VR Development",      "type": "domain" },
-          { "label": "Multiplayer",         "type": "domain" },
-          { "label": "UI Systems",          "type": "domain" },
-          { "label": "Editor Tooling",      "type": "domain" },
-          { "label": "Dependency Injection","type": "pattern" },
-          { "label": "Async Programming",   "type": "pattern" },
-          { "label": "Clean Architecture",  "type": "pattern" }
+          {
+            "label": "AR Development",
+            "type": "domain"
+          },
+          {
+            "label": "VR Development",
+            "type": "domain"
+          },
+          {
+            "label": "Multiplayer",
+            "type": "domain"
+          },
+          {
+            "label": "UI Systems",
+            "type": "domain"
+          },
+          {
+            "label": "Editor Tooling",
+            "type": "domain"
+          },
+          {
+            "label": "Dependency Injection",
+            "type": "pattern"
+          },
+          {
+            "label": "Async Programming",
+            "type": "pattern"
+          },
+          {
+            "label": "Clean Architecture",
+            "type": "pattern"
+          },
+          {
+            "label": "AI-Assisted Development",
+            "type": "pattern"
+          }
         ]
       }
     ]
@@ -330,7 +409,7 @@
     "sectionLabel": "Contact",
     "heading": "Let's make",
     "headingAccent": "something.",
-    "subtitle": "Open to new roles in game development. Based in Hungary, open to remote.",
+    "subtitle": "Open to new Unity roles — tools, systems, or games. Based in Hungary, open to remote.",
     "email": {
       "label": "Email",
       "address": "flamm.flame@gmail.com"
